@@ -1,0 +1,6 @@
+dist/
+node_modules/
+out/
+forge.config.js
+script.py
+innosetup-6.2.2.exe

@@ -1,0 +1,82 @@
+{
+  "name": "spotapp",
+  "version": "1.0.0",
+  "description": "Spot Rate App",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "watch": "webpack --config webpack.common.js --watch",
+    "web": "react-scripts start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/AMohamedAakhil/spotrate",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
+  "build": {
+    "icon": "./logo.ico",
+    "extends": null,
+    "appId": "com.spotrate.app",
+    "productName": "Spot Rate Retriever",
+    "win": {
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "extraFiles": {
+      "from": "python",
+      "to": "resources/python"
+    }
+  },
+  "keywords": [],
+  "author": "Aakhil",
+  "license": "ISC",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "D": "^1.0.0",
+    "daisyui": "^2.51.6",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^5.3.0",
+    "python-shell": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.1",
+    "react-scripts": "5.0.1",
+    "sucrase": "^3.32.0",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-react": "^7.18.6",
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "electron": "^24.2.0",
+    "electron-builder": "^23.6.0",
+    "modclean": "^3.0.0-beta.1",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.3.0",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "tailwindcss": "^3.3.2",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "preload": {
+    "js": "./src/preload.js"
+  }
+}

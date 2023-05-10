@@ -11,6 +11,7 @@ autoUpdater.autoInstallOnAppQuit = true;
 function createWindow() {
     const win = new BrowserWindow({
         autoHideMenuBar: true,
+        show: false,
         width: 1200,
         height: 800,
         icon: path.join(__dirname, "logo.ico"),
@@ -28,7 +29,8 @@ function createWindow() {
         protocol: 'file:',
         slashes: true
       }));
-    
+    win.maximize()
+    win.show()
 }
 /*
 
@@ -54,7 +56,7 @@ ipcMain.on('notify', (_, message) => {
 */
 
 
-ipcMain.on('notify', (_, message) => {
+ipcMain.on('notify', (event, message) => {
     args = String(message.toLowerCase()).split("/")
     if (args[0] == "m" || args[0] == "maersk") {
         exec(String(path.join(__dirname, "..", "python", "maersk.exe") + " " + args[1] + " " + args[2]), {shell: true}, (err, stdout, stderr) => {
@@ -62,8 +64,9 @@ ipcMain.on('notify', (_, message) => {
               console.error(`exec error: ${err}`);
               return;
             }
-          
+            
             console.log(`Number of files ${stdout}`);
+
     });
     } else if (args[0] == "c" || args[0] == "cma" || args[0] == "cma gcm" || args[0] == "cmagcm" || args[0] == "cma-gcm") {
         exec(String(path.join(__dirname, "..", "python", "cmagcm.exe") + " " + args[1] + " " + args[2]), {shell: true}, (err, stdout, stderr) => {
@@ -73,6 +76,7 @@ ipcMain.on('notify', (_, message) => {
             }
           
             console.log(`Number of files ${stdout}`);
+
           });     } else if (args[0] == "h" || args[0] == "happag" || args[0] == "lloyd" || args[0] == "happag lloyd" || args[0] == "happag-lloyd" || args[0] == "hl") {
             exec(String(path.join(__dirname, "..", "python", "happag.exe") + " " + args[1] + " " + args[2]), {shell: true}, (err, stdout, stderr) => {
                 if (err) {
@@ -81,6 +85,7 @@ ipcMain.on('notify', (_, message) => {
                 }
               
                 console.log(`Number of files ${stdout}`);
+
               });     } else {
         console.log("Invalid Keyword")
     }

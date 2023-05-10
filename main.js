@@ -35,7 +35,6 @@ function createWindow() {
 ipcMain.on('notify', (_, message) => {
     ls = exec(String(message))
 
-
     args = String(message.toLowerCase()).split("/")
     if (args[0] == "m" || args[0] == "maersk") {
         spawn("./python/maersk.exe", [args[1], args[2]])

@@ -12,7 +12,7 @@ const BasicSearch = () => {
     console.log(search);
     setSearch("");
 
-    ipcRenderer.logMessage.message(search);
+    ipcRenderer.logMessage(search);
 
   }
   return (

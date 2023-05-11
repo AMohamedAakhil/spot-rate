@@ -62,33 +62,36 @@ ipcMain.on('notify', (event, message) => {
         exec(String(path.join(__dirname, "..", "python", "maersk.exe") + " " + args[1] + " " + args[2]), {shell: true}, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              let err = err;
               return;
             }
             
-            console.log(`Number of files ${stdout}`);
+            console.log(`Number of files ${stdout}`);});
 
-    });
     } else if (args[0] == "c" || args[0] == "cma" || args[0] == "cma gcm" || args[0] == "cmagcm" || args[0] == "cma-gcm") {
         exec(String(path.join(__dirname, "..", "python", "cmagcm.exe") + " " + args[1] + " " + args[2]), {shell: true}, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              let err = err;
               return;
             }
           
-            console.log(`Number of files ${stdout}`);
+            console.log(`Number of files ${stdout}`);});
 
-          });     } else if (args[0] == "h" || args[0] == "happag" || args[0] == "lloyd" || args[0] == "happag lloyd" || args[0] == "happag-lloyd" || args[0] == "hl") {
+    } else if (args[0] == "h" || args[0] == "happag" || args[0] == "lloyd" || args[0] == "happag lloyd" || args[0] == "happag-lloyd" || args[0] == "hl") {
             exec(String(path.join(__dirname, "..", "python", "happag.exe") + " " + args[1] + " " + args[2]), {shell: true}, (err, stdout, stderr) => {
                 if (err) {
                   console.error(`exec error: ${err}`);
+                  let err = err;
                   return;
                 }
               
-                console.log(`Number of files ${stdout}`);
-
-              });     } else {
+            console.log(`Number of files ${stdout}`);});
+    } else {
         console.log("Invalid Keyword")
     }
 });
+
+
 
 app.whenReady().then(createWindow)

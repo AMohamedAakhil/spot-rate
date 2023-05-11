@@ -5,9 +5,9 @@ import BasicSearch from '../components/BasicSearch';
 const App = () => {
   return (
     <div data-theme="night">
-   <Navbar />
-   <BasicSearch />
-  </ div>
+      <Navbar />
+      <BasicSearch />
+    </div>
   );
 };
 
